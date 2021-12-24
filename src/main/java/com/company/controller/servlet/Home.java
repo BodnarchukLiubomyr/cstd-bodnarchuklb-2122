@@ -40,13 +40,8 @@ public class Home extends HttpServlet {
 
         if (showOnlyService.equals("All")) {
             tariffs = TariffDAO.selectTariffs();
-        } else {
-            tariffs = TariffDAO.selectTariffs(showOnlyService);
         }
         List<Tariff> emptyFilms = new ArrayList<>();
-
-
-
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/internet_provider/home.jsp");
         requestDispatcher.forward(req,resp);
@@ -55,33 +50,21 @@ public class Home extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-//        private List<Tariff> pagination(HttpServletRequest req, List<Tariff> tariffs) {
-//            int filmAmount = tariffs.size();
-//            int pageAmount = (int) Math.ceil((double) Amount / TARIFFS_LIMIT);
-//
-//            Integer[] pages = new Integer[pageAmount];
-//            for (int i = 0; i < pageAmount; ++i) {
-//                pages[i] = i + 1;
-//            }
-//
-//            if (req.getParameter("page") != null) {
-//                currentPage = Integer.parseInt(req.getParameter("page"));
-//                if (currentPage > pageAmount || currentPage < 1) {
-//                    currentPage = 1;
-//                }
-//            }
-//
-//            int offset = (currentPage - 1) * TARIFFS_LIMIT;
-//            int lastTariff = currentPage * TARIFFS_LIMIT;
-//
-//            tariffs = tariffs.stream().skip(offset).limit(lastTariff).collect(Collectors.toList());
-//
-//            req.setAttribute(CURRENT_PAGE, currentPage);
-//            req.setAttribute(PAGES, pages);
-//            req.setAttribute(FIRST_PAGE, CONST_ONE);
-//            req.setAttribute(LAST_PAGE, pageAmount);
-//
-//            return tariffs;
-//        }
+        private List<Tariff> pagination(HttpServletRequest req, List<Tariff> tariffs) {
+            int filmAmount = tariffs.size();
+
+            Integer[] pages = new Integer[pageAmount];
+            for (int i = 0; i < pageAmount; ++i) {
+                pages[i] = i + 1;
+            }
+
+            if (req.getParameter("page") != null) {
+                currentPage = Integer.parseInt(req.getParameter("page"));
+                if (currentPage > pageAmount || currentPage < 1) {
+                    currentPage = 1;
+                }
+            }
+            return tariffs;
+        }
     }
 }
