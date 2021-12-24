@@ -132,6 +132,30 @@ public class TariffDAO {
 
         return tariffList;
     }
+
+    public List<Tariff> selectTariffsByPlace(Place place){
+        List<Tariff> list = new LinkedList<>();
+        PreparedStatement pStatement = null;
+        ResultSet resultSet = null;
+        try (Connection connection = MySQLConnector.getConnection() ){
+            pStatement = connection.prepareStatement(SELECT_TARIFF_BY_PLACE);
+            pStatement.setObject(1, place);
+            while (resultSet.next()){
+                Tariff tariff = new Tariff();
+                mapTariff(tariff,resultSet);
+                list.add(tariff);
+
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            close(pStatement);
+            close(resultSet);
+        }
+        return list;
+    }
     ////////////////////////////////////////////////////////////////////////////////
 
 //    public List<Tariff> selectTariffsBysStatus(String status) {

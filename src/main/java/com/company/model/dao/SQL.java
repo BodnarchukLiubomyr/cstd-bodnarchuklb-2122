@@ -12,6 +12,7 @@ public class SQL {
     public static final String SELECT_USER = "select * from account where login = ?;";
     public static final String SELECT_USER_DETAILS = "select * from account_details where id = ?;";
 
+    public static final String SELECT_PLACE_BY_ID = "select * from place where id = ?;";
 
     public static final String INSERT_TARIFF = "insert into "+
             "tariff(name_en,time,description,price,service_id,place_id,tariff_status_id) "+
