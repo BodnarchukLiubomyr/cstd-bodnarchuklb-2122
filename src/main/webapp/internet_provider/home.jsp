@@ -79,50 +79,22 @@
             </div>
             <div class="card-body">
                 <h1 class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>10 users included</li>
-                    <li>2 GB of storage</li>
-                    <li>Email support</li>
-                    <li>Help center access</li>
-                </ul>
-                <form action="/internet_provider/placeChoose">
-                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Choose</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-            <div class="card-header py-3">
-                <h4 class="my-0 fw-normal">Pro</h4>
-            </div>
-            <div class="card-body">
-                <h1 class="card-title pricing-card-title">$15<small class="text-muted fw-light">/mo</small></h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>20 users included</li>
-                    <li>10 GB of storage</li>
-                    <li>Priority email support</li>
-                    <li>Help center access</li>
-                </ul>
-                <form action="/internet_provider/placeChoose">
-                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Choose</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm border-primary">
-            <div class="card-header py-3 text-white bg-primary border-primary">
-                <h4 class="my-0 fw-normal">Enterprise</h4>
-            </div>
-            <div class="card-body">
-                <h1 class="card-title pricing-card-title">$29<small class="text-muted fw-light">/mo</small></h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>30 users included</li>
-                    <li>15 GB of storage</li>
-                    <li>Phone and email support</li>
-                    <li>Help center access</li>
-                </ul>
+                <c:forEach var="tariff" items="${tariffs}">
+                    <form class="timetable mb-4 mx-auto" style="width: 700px; height: 360px">
+                        <ul class="list-group list-group-horizontal">
+                            <li>
+                                <ul>
+                                    <li><p class="h2 text-info">${tariff.name_en}</p></li>
+                                    <li><p class="h5 text-white">${tariff.service.service_en}</p></li>
+                                    <li><p class="h5 text-white">${tariff.status.status_en}</p></li>
+                                    <li><p class="h2 text-info">${tariff.price}</p></li>
+                                    <li><p class="h2 text-info">${tariff.description}</p></li>
+                                    <li><p class="h5 text-white">Time: ${tariff.time} days</p></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </form>
+                </c:forEach>
                 <form action="/internet_provider/placeChoose">
                     <button type="button" class="w-100 btn btn-lg btn-outline-primary">Choose</button>
                 </form>

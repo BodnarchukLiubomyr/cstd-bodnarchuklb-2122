@@ -27,6 +27,13 @@ public class SuggestTariffs extends HttpServlet {
         tariff.setDescription(req.getParameter("description"));
         tariff.setPrice(new BigDecimal(req.getParameter("price")));
         tariff.setTime(Integer.parseInt(req.getParameter("time")));
+
+        tariff.getName_en();
+        tariff.getDescription();
+        tariff.getPrice();
+        tariff.getTime();
+        tariff.getStatus();
+        tariff.getService();
         try {
             new TariffDAO().selectTariff(tariff.getId());
         } catch (SQLException e) {
