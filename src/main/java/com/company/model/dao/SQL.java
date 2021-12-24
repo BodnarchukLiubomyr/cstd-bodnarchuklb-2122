@@ -15,8 +15,8 @@ public class SQL {
     public static final String SELECT_PLACE_BY_ID = "select * from place where id = ?;";
 
     public static final String INSERT_TARIFF = "insert into "+
-            "tariff(name_en,time,description,price,service_id,place_id,tariff_status_id) "+
-            "values(?,?,?,?,?,?,?);";
+            "tariff(name_en,time,description,price,service_id,tariff_status_id) "+
+            "values(?,?,?,?,?,?);";
     public static final String  SELECT_TARIFF_BY_ID = "select * from tariff where id = ?;";
 
     public static final String SELECT_TARIFFS = "select * from tariff;";
@@ -42,7 +42,7 @@ public class SQL {
 
     public static final String INSERT_TARIFF_TO_ORDER = "insert into " +
             "tariff_to_order(name_en,description,tariff_status_id,account_id) "
-            + "values(?,?,?,(select id from tariff_status where status_en = 'available'));";
+            + "values(?,?,?,?);";
 
     public static final String SELECT_TARIFF_BY_PRICE = "select * from tariff where price = ?;";
 
@@ -50,7 +50,7 @@ public class SQL {
 
     public static final String SELECT_USER_PAYMENTS_LIMIT = "select * from payment where wallet_id = ? limit ?, ?;";
 
-    public static final String SELECT_AMOUNT_PAYMENTS = "select count(wallet_id) as count from payment where wallet_id = ?;";
+    public static final String SELECT_AMOUNT_PAYMENTS = "select count(wallet_id) as count from payment where account_id = ?;";
 
     public static final String SELECT_USER_BY_ID = "select * from account where id = ?;";
 
@@ -64,7 +64,7 @@ public class SQL {
 
     public static final String SELECT_TARIFF_BY_PLACE = "select * from tariff where place_id = ?;";
 
-    public static final String SELECT_TARIFF_BY_SERVICE = "select * from tariff where service_id = (select id from service where service_en = ?);";
+    public static final String SELECT_TARIFF_BY_SERVICE = "select * from tariff where service_id = ?;";
 
     public static final String SELECT_SERVICES = "select * from service";
 

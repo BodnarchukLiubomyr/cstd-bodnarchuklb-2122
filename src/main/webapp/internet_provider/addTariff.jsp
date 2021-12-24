@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="container text-center mt-5 mb-4">
-    <form style="width: 400px; margin: auto; padding: 30px;" method="post" enctype="multipart/form-data">
+    <form style="width: 400px; margin: auto; padding: 30px;" method="post" action="/internet_provider/addTariff">
         <h1 class="h3 mb-3 font-weight-normal">Tariff</h1>
         <div class="dropdown mb-2">
             <select name="service" class="btn btn-outline-secondary dropdown-toggle" required>
